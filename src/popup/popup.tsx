@@ -1,21 +1,15 @@
 import React, { useEffect } from 'react'
 import ReactDOM from 'react-dom'
+import 'fontsource-roboto'
 import './popup.css'
-import { fetchOpenWeatherData } from '../utils/api'
+import WeatherCard from './WeatherCard'
 
 const App: React.FC<{}> = () => {
-  useEffect(() => {
-    fetchOpenWeatherData('Toronto')
-      .then((data) => {
-        console.log(data)
-        console.log('Temperature is: ', data.main.temp)
-      })
-      .catch((err) => console.log(err))
-  }, [])
-
   return (
     <div>
-      <img src="icon.png" />
+      <WeatherCard city="Toronto" />
+      <WeatherCard city="New York" />
+      <WeatherCard city="Error" />
     </div>
   )
 }
