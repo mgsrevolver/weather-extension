@@ -11,7 +11,7 @@ import {
 import { Add as AddIcon, ReportRounded } from '@material-ui/icons'
 import 'fontsource-roboto'
 import './popup.css'
-import WeatherCard from './WeatherCard'
+import WeatherCard from '../components/WeatherCard'
 import {
   setStoredCities,
   setStoredOptions,
