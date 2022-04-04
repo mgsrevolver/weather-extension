@@ -49,13 +49,23 @@ const App: React.FC<{}> = () => {
     })
   }
 
+  const handleTempScaleButtonClick = () => {
+    const updateOptions: LocalStorageOptions = {
+      ...options,
+      tempScale: options.tempScale === 'metric' ? 'imperial' : 'metric',
+    }
+    setStoredOptions(updateOptions).then(() => {
+      setOptions(updateOptions)
+    })
+  }
+
   if (!options) {
     return null
   }
 
   return (
     <Box mx="8px" my="16px">
-      <Grid container justifyContent="space-evenly">
+      <Grid container justify="space-evenly">
         <Grid item>
           <Paper>
             <Box px="15px" py="5px">
@@ -71,8 +81,8 @@ const App: React.FC<{}> = () => {
           </Paper>
           <Grid item>
             <Paper>
-              <Box px="4px" py="4px">
-                <IconButton>
+              <Box py="4px">
+                <IconButton onClick={handleTempScaleButtonClick}>
                   {options.tempScale === 'metric' ? '\u2103' : '\u2109'}
                 </IconButton>
               </Box>
@@ -84,6 +94,7 @@ const App: React.FC<{}> = () => {
       {cities.map((city, index) => (
         <WeatherCard
           city={city}
+          tempScale={options.tempScale}
           key={index}
           onDelete={() => handleCityDeleteButtonClick(index)}
         />
