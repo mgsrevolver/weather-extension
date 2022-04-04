@@ -79,18 +79,20 @@ const App: React.FC<{}> = () => {
               </IconButton>
             </Box>
           </Paper>
-          <Grid item>
-            <Paper>
-              <Box py="4px">
-                <IconButton onClick={handleTempScaleButtonClick}>
-                  {options.tempScale === 'metric' ? '\u2103' : '\u2109'}
-                </IconButton>
-              </Box>
-            </Paper>
-          </Grid>
+        </Grid>
+        <Grid item>
+          <Paper>
+            <Box py="4px">
+              <IconButton onClick={handleTempScaleButtonClick}>
+                {options.tempScale === 'metric' ? '\u2103' : '\u2109'}
+              </IconButton>
+            </Box>
+          </Paper>
         </Grid>
       </Grid>
-
+      {options.homeCity != '' && (
+        <WeatherCard city={options.homeCity} tempScale={options.tempScale} />
+      )}
       {cities.map((city, index) => (
         <WeatherCard
           city={city}
