@@ -9,6 +9,7 @@ import {
 } from '@material-ui/core'
 import {
   fetchOpenWeatherData,
+  getWeatherIconSrc,
   OpenWeatherData,
   OpenWeatherTempScale,
 } from '../../utils/api'
@@ -75,6 +76,12 @@ const WeatherCard: React.FC<{
       <Typography className="weatherCard-body">
         Feels like: {Math.round(weatherData.main.feels_like)}
       </Typography>
+      {weatherData.weather.length > 0 && (
+        <>
+          (
+          <img src={getWeatherIconSrc(weatherData.weather[0].icon)} />)
+        </>
+      )}
     </WeatherCardContainer>
   )
 }
